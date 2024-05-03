@@ -1,0 +1,59 @@
+{
+  "id": "image_generation_via_dalle_3",
+  "uuid": "0ee9d4d8-c453-40bd-b2e1-04b94e935fa2",
+  "userSettings": [
+    {
+      "name": "openaikey",
+      "label": "OpenAI API Key (Required)",
+      "description": "The images will be generated using this OpenAI API. Get your API key from https://platform.openai.com/account/api-keys",
+      "type": "password",
+      "required": true,
+      "placeholder": "sk-******"
+    },
+    {
+      "name": "resolution",
+      "label": "Resolution",
+      "description": "Optional, default: \"1024x1024\"",
+      "type": "enum",
+      "values": ["1024x1024", "1024x1792", "1792x1024"]
+    },
+    {
+      "name": "quality",
+      "label": "Quality",
+      "description": "Optional, default: \"standard\"",
+      "type": "enum",
+      "values": ["standard", "hd"]
+    }
+  ],
+  "emoji": "✨",
+  "title": "DALL-E 3",
+  "openaiSpec": {
+    "name": "image_generation_via_dalle_3",
+    "parameters": {
+      "type": "object",
+      "required": ["prompt1"],
+      "properties": {
+        "prompt1": {
+          "type": "string",
+          "description": "The description of one (the first) image as defined in the guidelines."
+        },
+        "prompt2": {
+          "type": "string",
+          "description": "The description of one (the second, optional) image as defined in the guidelines."
+        },
+        "prompt3": {
+          "type": "string",
+          "description": "The description of one (the third, optional) image as defined in the guidelines."
+        },
+        "prompt4": {
+          "type": "string",
+          "description": "The description of one (the fourth, optional) image as defined in the guidelines."
+        }
+      }
+    },
+    "description": "Generate images using DALL-E 3 based on image descriptions. Adhere to guidelines such as English translation, not depicting politicians or recent artists, and ensuring artist references are over 100 years old.\nWhen creating prompts: substitute artist names with style-describing adjectives, include artistic era, mention primary medium. Image type, descent, gender are to be explicitly stated. Avoid offense and bias, conceal identities except gender and physique, retain text references, replace profession titles with universal terms.\nPrompt changes aren't allowed unless they anonymise individuals. Replace creative professional/studio names with style descriptions. All prompts should detail every image part in objective terms within a detailed paragraph of over three sentences.\nImportant: after calling this function, the output images will be shown to the user automatically. You don't need to include the output image to the users again in your response to avoid duplicate images."
+  },
+  "system": true,
+  "implementationType": "javascript",
+  "outputType": "render_markdown"
+}
