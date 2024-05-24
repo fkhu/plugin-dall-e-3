@@ -36,7 +36,7 @@ async function createOpenAIURL(prompt, openaikey, quality, resolution) {
 
   let url = data.data[0].url;
 
-  let endresult = '![' + prompt.replace(/[\[\]]/, '') + '](' + url + ')';
+  let endresult = '![' + prompt.replace(/[[]]/, '') + '](' + url + ')';
   return endresult;
 }
 
@@ -47,8 +47,8 @@ async function generateOpenAIResult(prompts, openaikey, quality, resolution) {
     )
   );
   return (
-    results.join('\\n\\n') +
-    '\\n_Note: Generated images will expire after 1 hour. Save them to your device if you wish to keep the images._'
+    results.join('\n\n') +
+    '\n_Note: Generated images will expire after 1 hour. Save them to your device if you wish to keep the images._'
   );
 }
 
