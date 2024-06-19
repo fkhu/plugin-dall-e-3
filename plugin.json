@@ -31,23 +31,11 @@
     "name": "image_generation_via_dalle_3",
     "parameters": {
       "type": "object",
-      "required": ["prompt1"],
+      "required": ["prompt"],
       "properties": {
-        "prompt1": {
+        "prompt": {
           "type": "string",
-          "description": "The description of one (the first) image as defined in the guidelines."
-        },
-        "prompt2": {
-          "type": "string",
-          "description": "The description of one (the second, optional) image as defined in the guidelines."
-        },
-        "prompt3": {
-          "type": "string",
-          "description": "The description of one (the third, optional) image as defined in the guidelines."
-        },
-        "prompt4": {
-          "type": "string",
-          "description": "The description of one (the fourth, optional) image as defined in the guidelines."
+          "description": "The description of the image as defined in the guidelines."
         }
       }
     },
