@@ -63,10 +63,7 @@ async function image_generation_via_dalle_3(params, userSettings) {
   }
 
   const prompts = [
-    params.prompt1,
-    params.prompt2,
-    params.prompt3,
-    params.prompt4,
+    params.prompt
   ].filter(Boolean);
   const result = await generateOpenAIResult(
     prompts,
