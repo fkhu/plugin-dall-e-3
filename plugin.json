@@ -29,6 +29,7 @@
   "title": "DALL-E 3",
   "openaiSpec": {
     "name": "image_generation_via_dalle_3",
+    "strict": true,
     "parameters": {
       "type": "object",
       "required": ["prompt"],
