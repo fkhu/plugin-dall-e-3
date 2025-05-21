@@ -1,3 +1,17 @@
+function escapeAlt(text) {
+  if (!text) {
+    return '';
+  }
+
+  return text
+    .replace(/\\/g, '\\\\') // backslash first
+    .replace(/\n/g, ' ') // no newlines in alt text
+    .replace(/\[/g, '\\[') // escape [ and ]
+    .replace(/\]/g, '\\]')
+    .replace(/</g, '&lt;') // defensive: HTML-sensitive chars
+    .replace(/>/g, '&gt;');
+}
+
 async function createOpenAIURL(prompt, openaikey, quality, resolution) {
   var requestHeaders = new Headers();
   requestHeaders.append('Content-Type', 'application/json');
@@ -35,8 +49,9 @@ async function createOpenAIURL(prompt, openaikey, quality, resolution) {
   let data = await response.json();
 
   let url = data.data[0].url;
+  const alt = escapeAlt(prompt);
 
-  let endresult = '![' + prompt.replace(/[[]]/, '') + '](' + url + ')';
+  let endresult = '![' + alt + '](' + url + ')';
   return endresult;
 }
 
@@ -62,9 +77,7 @@ async function image_generation_via_dalle_3(params, userSettings) {
     );
   }
 
-  const prompts = [
-    params.prompt
-  ].filter(Boolean);
+  const prompts = [params.prompt].filter(Boolean);
   const result = await generateOpenAIResult(
     prompts,
     openaikey,
